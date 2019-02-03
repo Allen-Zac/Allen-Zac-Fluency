@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Objects</title>
+</head>
+<body>
+    <h1>Objects</h1>
+    <p id="Output1"></p>
+    <p id="Output2"></p>
+    <p id="Output3"></p>
+    <p id="Output4"></p>
+    <p id="Output5"></p>
+    
+    <script>
+        function Card(name, effect, type, cost) {
+            this.cardName = name;
+            this.cardEffect = effect;
+            this.cardType = type;
+            this.cardCost = cost;
+            this.cardDetails = function() {return "Card name: " + this.cardName + ", The effect is: " + this.cardEffect + ", the type is: " + this.cardType + ", and the cost is: " + this.cardCost + "."};
+        }
+        
+        var workshop = new Card('Workshop', 'Gain a card costing up to 4', 'Action', 3);
+        var smithy = new Card('Smithy', '+3 Cards', 'Action', 4);
+        var village = new Card('Village', '+1 Card, +2 Actions', 'Action', 3);
+        var woodcutter = new Card('Woodcutter', '+1 Buy, +2 Coin', 'Action', 3);
+        var duke = new Card('Duke', 'Worth 1VP per Duchy you have', 'Victory', 5);
+        
+        document.getElementById("Output1").innerHTML = workshop.cardDetails();
+        document.getElementById("Output2").innerHTML = smithy.cardDetails();
+        document.getElementById("Output3").innerHTML = village.cardDetails();
+        document.getElementById("Output4").innerHTML = woodcutter.cardDetails();
+        document.getElementById("Output5").innerHTML = duke.cardDetails();
+    </script>
+</body>
+</html>

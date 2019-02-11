@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+            window.onload = function hide() {
+                document.getElementById("resetButton").style.display = "none";
+            }
+            
+            function changeColor1() {
+                document.getElementById("para1").style.color = "red";
+            }
+            
+            function colorAndMarg() {
+                document.getElementById("para1").style.cssText = "color: green; margin-left: 50px; margin-right: 50px";
+            }
+            
+            function changeCSS() {
+                document.getElementById("background").style.backgroundColor = "silver";
+                
+                document.getElementById("header").style.cssText = "text-align: center; font-size: 40px";
+                    
+                document.getElementById("para1").style.cssText = "text-align: center; color: blue";
+                
+                document.getElementById("d1").style.textAlign = "center";
+                
+                document.getElementById("b1").style.color = "brown";
+                    
+                document.getElementById("para2").style.cssText = "text-align: center; color: green";
+                
+                document.getElementById("d2").style.textAlign = "center";
+                
+                document.getElementById("b2").style.color = "brown";
+                    
+                document.getElementById("para3").style.cssText = "text-align: center; color: red";
+                
+                document.getElementById("d3").style.textAlign = "center";
+                
+                document.getElementById("b3").style.color = "brown"; 
+                
+                document.getElementById("resetButton").style.display = "block";
+            }
+            
+            function resetCSS() {
+                document.getElementById("background").style.backgroundColor = "white";
+                
+                document.getElementById("header").style.cssText = "text-align: left; font-size: 2em";
+                    
+                document.getElementById("para1").style.cssText = "text-align: left; color: black";
+                
+                document.getElementById("d1").style.textAlign = "left";
+                
+                document.getElementById("b1").style.color = "black";
+                    
+                document.getElementById("para2").style.cssText = "text-align: left; color: black";
+                
+                document.getElementById("d2").style.textAlign = "left";
+                
+                document.getElementById("b2").style.color = "black";
+                    
+                document.getElementById("para3").style.cssText = "text-align: left; color: black";
+                
+                document.getElementById("d3").style.textAlign = "left";
+                
+                document.getElementById("b3").style.color = "black";
+                
+                document.getElementById("resetButton").style.display = "none";
+            }
+            
+        </script>
+    </head>
+    <body>
+        <div id="background">
+            
+        <h1 id="header">Changing CSS With JS</h1>
+            
+        <p id="para1">
+            CSS is easy to change with JavaScript, all it requires is a reference to the element ID, followed by the style change you want to make. Lets begin by changing the color of this paragraph.
+        </p>
+        
+        <div id="d1"> <button id="b1" type="button" onclick="changeColor1()">Change CSS</button></div>
+        
+        <p id="para2">
+            Now lets change the color, and the margins of that first paragraph at the same time.
+        </p>
+        
+        <div id="d2"> <button id="b2" type="button" onclick="colorAndMarg()">Change CSS</button></div>
+        
+        <p id="para3">
+        Lastly, let's change the format of the entire page in one go.
+        </p>
+        
+        <div id="d3"> <button id="b3" type="button" onclick="changeCSS()">Change CSS</button></div>
+        
+        <div id="d4">
+        <button id="resetButton" type="button" onclick="resetCSS()">Reset</button></div>
+            
+        </div>
+        
+    </body>
+</html>

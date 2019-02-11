@@ -4,30 +4,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>JavaScript</title>
-        <script>
-        function DomHand() {
-            var deck = ["Copper", "Copper", "Copper", "Copper", "Copper", 
-                        "Copper", "Copper", "Estate", "Estate", "Estate"];
+    <script>
+        function domHand() {
+            var deck = ["Copper", "Copper", "Copper", "Copper",     "Copper", "Copper", "Copper", "Estate", "Estate", "Estate"];
+            
             var output = "Your hand is: "
+            
             var rand = 0;
             
             for (i = 0; i < 5; i++) {
                 rand = Math.floor(Math.random() * Math.floor(10));
                 output += deck[rand] + " ";
+                }
+            
+                document.getElementById("output").innerHTML = output;
             }
-            document.getElementById("output").innerHTML = output;
-        }
             
     </script>
+    
 </head>
 <body>
     <h1>Dominion Starting Hand Generator</h1>
     
     <h3>The starting deck in dominion contains 7 Coppers and 3 Estates. Press the button to generate a new starting hand.</h3>
     
-    <button type="button" onclick="DomHand()">New Hand</button>
+    <button type="button" onclick="domHand()">New Hand</button>
     
-    <div id="output"></div>
+    <p id="output"></p>
     
 </body>
 </html>

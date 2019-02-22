@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <title>JSON/Stringify</title>
+    </head>
+    <body>
+        <h1>Stringify and Parse JSON</h1>
+        
+        <h2>Create an object, then stringify it:</h2>
+        <p id="stringOut"></p>
+        
+        <h2>Use a JSON object to display Pocatello weather:</h2>
+        <p>
+            <b>Current Temp:</b> <span id="temp"></span>&deg;f<br>
+            <b>Description:</b> <span id="desc"></span><br>
+            <b>Wind Speed:</b> <span id="wind"></span> MPH<br>
+        </p>
+        
+        
+        <script>
+            //Create an object constructor.
+            function Food(name, origin, type){
+                this.name = name;
+                this.origin = origin;
+                this.type = type;    
+            }
+            
+            //Make a new Food object.
+            var bratwurst = new Food('Bratwurst', 'Germany', 'Meat');
+            
+            //Add an array of brands to my object.
+            bratwurst.brands = ['Johnsonville', 'Archer Farms', 'Jewel', 'Trader Joe'];
+            
+            //Stringify my object.
+            var stringIt = JSON.stringify(bratwurst);
+            document.getElementById("stringOut").innerHTML = stringIt;
+            
+            //Get JSON data.
+            var jsonData = new XMLHttpRequest();
+            var url = "http://api.openweathermap.org/data/2.5/weather?zip=83201,us&APPID=8dac075262bd3f12b5011ba752715844&units=imperial";
+            
+            jsonData.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var myArr = JSON.parse(this.responseText);
+                    
+                    document.getElementById("temp").innerHTML = myArr.main.temp;
+                    document.getElementById("desc").innerHTML = myArr.weather[0].description;
+                    document.getElementById("wind").innerHTML = myArr.wind.speed;
+                }
+            };
+            jsonData.open("GET", url, true);
+            jsonData.send();
+            
+        </script>
+    </body>
+</html>

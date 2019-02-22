@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <title>XMLHTTPRequests</title>
+    </head>
+    <body>
+        <h1>Consuming JSON using an XMLHTTPRequest</h1>
+        
+        <h2>Get city weather data:</h2>
+        <p>
+            <b>City:</b> <input type="text" id="city" placeholder="Pocatello">
+            <button type="button" onclick="weatherCall()">Submit</button>
+        </p>
+        
+        <p id="data">
+            <b>Current Temp:</b> <span id="temp"></span>&deg;f<br>
+            <b>Description:</b> <span id="desc"></span><br>
+            <b>Wind Speed:</b> <span id="wind"></span> MPH<br>
+        </p>
+        
+        <script>
+            window.onload = function hide() {
+                document.getElementById("data").style.display = "none";
+            }
+            function weatherCall(){
+                var jsonData = new XMLHttpRequest();
+                var api = "https://api.openweathermap.org/data/2.5/weather?q=";
+                var place = document.getElementById("city").value;
+                var urlCont = "&APPID=8dac075262bd3f12b5011ba752715844&units=imperial";
+                var url = api + place + urlCont;
+                
+                document.getElementById("data").style.display = "block";
+                
+                jsonData.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var myArr = JSON.parse(this.responseText);
+
+                        document.getElementById("temp").innerHTML = myArr.main.temp;
+                        document.getElementById("desc").innerHTML = myArr.weather[0].description;
+                        document.getElementById("wind").innerHTML = myArr.wind.speed;
+                    }
+                };
+                jsonData.open("GET", url, true);
+                jsonData.send();
+            }
+            
+        </script>
+    </body>
+</html>

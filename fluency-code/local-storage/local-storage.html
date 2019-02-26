@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        
+    </head>
+    
+    <style>
+        h1 {text-align: center;} 
+        
+    </style>
+    
+    <body>
+        <h1>Local Storage</h1>
+       
+        <form>
+            <fieldset>
+                <legend>All About You</legend>
+                    <div>
+                        <label>
+                            <span>Name:</span>
+                            <input id="name" type="text" placeholder="Name">
+                        </label>
+                    </div>
+                
+                    <div>
+                        <label>
+                            <span>Age:</span>
+                            <input id="age" type="text" placeholder="Age">
+                        </label>
+                    </div>
+                    
+                    <div>
+                        <label>
+                            <span>Favorite Color:</span>
+                            <input id="color" type="text" placeholder="Color">
+                        </label>
+                    </div>
+                   
+                    <div>
+                        <label>
+                            <span>Favorite Food:</span>
+                            <input id="food" type="text" placeholder="Food">
+                        </label>
+                    </div>
+                </fieldset>
+        </form>
+        
+        <button type="button" onclick="store()">Save to Local Storage</button><br>
+        
+        <button type="button" onclick="loadData()">Load Saved Data</button><br>
+        
+        <p id="savedData" hidden></p>
+        
+        <button type="button" onclick="clearData()">Clear Local Storage</button>
+        
+    </body>
+    
+    <script>
+        var stored = "stored";
+        function store() {
+           function Person(name, age, color, food) {
+               this.name = name;
+               this.age = age;
+               this.color = color;
+               this.food = food;
+           }
+           
+           var n = document.getElementById("name").value;
+           var a = document.getElementById("age").value;
+           var c = document.getElementById("color").value;
+           var f = document.getElementById("food").value;
+           
+           var p1 = new Person(n, a, c, f);
+           
+           localStorage.setItem(stored, JSON.stringify(p1));
+           
+        } 
+        
+        function loadData() {
+            document.getElementById("savedData").style.display = "block";
+            
+           var p1 = JSON.parse(localStorage.getItem(stored));
+           
+           
+           if (localStorage.key(0)) {
+               document.getElementById("savedData").innerHTML = "Your name is " + p1.name + ", you are " + p1.age + " years old, your favorite color is " + p1.color + ", and your favorite food is " + p1.food + ".";
+           }
+            else
+                document.getElementById("savedData").innerHTML = "No local data has been saved."
+            
+        }
+        
+        function clearData() {
+            localStorage.clear();
+        }
+        
+    </script>
+    
+</html>

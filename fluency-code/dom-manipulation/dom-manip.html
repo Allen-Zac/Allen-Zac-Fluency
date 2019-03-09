@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        
+    </head>
+    
+    <style>
+        h1 {text-align: center;}
+        #container {
+            color: blue;
+            border-color: black;
+            text-align: center;
+            background-color: azure;
+            border-style: double;
+        }
+    </style>
+    
+    <body>
+        <h1>Dom Manipulation</h1>
+        
+        <button id="newTop">New Upper Element</button>
+        <button id="newLow">New Lower Element</button>
+        <section id="container">
+            <div class="clone">
+            <h2>Starting Element</h2>
+            <button class="remove">Remove</button>
+            </div>
+        </section>
+    
+    <script>
+        var count = 0;
+        var container = document.getElementById('container');
+        
+        function createNew(num) {
+          var makeNew = document.createElement('p');
+          makeNew.classList.add('clone');
+
+          var h2 = document.createElement('h2');
+          h2.appendChild(document.createTextNode(`New Element ${num}`));
+          makeNew.appendChild(h2);
+
+          var button2 = document.createElement('button');
+          button2.appendChild(document.createTextNode('Remove'));
+          button2.classList.add('remove');
+          makeNew.appendChild(button2);
+
+          return makeNew;
+        };
+        document.getElementById('newTop').addEventListener('click', function() {
+          count++;
+          var makeNew = createNew(count);
+          container.insertBefore(makeNew, container.children[0]);
+        });
+
+        document.querySelector('#newLow').addEventListener('click', function() {
+          count++;
+          var makeNew = createNew(count);
+          container.appendChild(makeNew);
+        });
+
+        document.getElementById('container').addEventListener('click', function(e) {
+            let p = e.target.parentElement;
+            p.parentNode.removeChild(p);
+        });
+
+    </script>
+        
+    </body>
+    
+</html>

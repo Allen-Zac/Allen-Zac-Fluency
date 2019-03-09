@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        
+        <style>
+            h1 {text-align: center;}
+            
+            div#transEx {
+                background: cyan;
+                height: 200px;
+                width: 400px;
+                overflow: hidden;
+            }
+            
+            div#aniEx {
+                background: orange;
+                height: 200px;
+                width: 400px;
+            }
+            
+            @keyframes aniOne {
+                from { 
+                    background: orange; 
+                    height: 200px;
+                    width: 400px;
+                }
+                to { 
+                    background: lightgreen;
+                    height: 50px;
+                    width: 400px;
+                }
+            }
+            
+            @keyframes aniTwo {
+                0% {
+                    background: lightgreen;
+                    height: 50px;
+                    width: 400px;
+                }
+                33% {
+                    background: red;
+                    height: 100px;
+                    width: 200px;
+                }
+                66% {
+                    background: gold;
+                    height: 150px;
+                    width: 150px;
+                }
+                100% {
+                    background: orange;
+                    height: 200px;
+                    width: 400px;
+                }
+            }
+        
+        </style>
+    </head>
+    <body>
+        <h1>Transitions and Animations</h1>
+        
+    <script>
+    // Transition Functions
+        
+        function changeBG(el, color) {
+            var elem = document.getElementById(el);
+            elem.style.transition = "background 1.0s linear 0s";
+            elem.style.background = color;
+        }
+        
+        function slideUp(el) {
+            var elem = document.getElementById(el);
+            elem.style.transition = "height 0.5s ease-out 0s";
+            elem.style.height = "0px";
+        }
+        
+        function slideDown(el) {
+            var elem = document.getElementById(el);
+            elem.style.transition = "height 0.5s ease-in 0s";
+            elem.style.height = "200px";
+        }
+        
+    // Animation Functions
+        
+        function animation1(el) {
+            var elem = document.getElementById(el);
+            elem.style.animation = "aniOne 2s both";
+        }
+        
+        function animation2(el) {
+            var elem = document.getElementById(el);
+            elem.style.animation = "aniTwo 4s both";
+        }
+        
+    </script>
+        
+        <h2>Transitions</h2>
+        
+        <button type="button" onclick="changeBG('transEx', 'pink');">Pink</button>
+        <button type="button" onclick="changeBG('transEx', 'purple');">Purple</button>
+        <button type="button" onclick="changeBG('transEx', 'cyan');">Reset Color</button><br><br>
+        <button type="button" onclick="slideUp('transEx');">Slide Up</button>
+        <button type="button" onclick="slideDown('transEx');">Slide Down</button><br><br>
+        
+        <div id="transEx">This div will be used for my transitions examples.</div>
+        
+        <h2>Animations</h2>
+        
+        <button type="button" onclick="animation1('aniEx');">Play Animation 1</button>
+        
+        <button type="button" onclick="animation2('aniEx');">Play Animation 2</button><br><br>
+        
+        <div id="aniEx">This div will be used for my animations examples.</div>
+        
+    </body> 
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        
+        <style>
+            h1 {text-align: center;}
+            
+            div {border: solid black;}
+            
+            div#container {
+                height: 200px;
+                width: 200px;
+                border: none;
+            }
+            
+            div#click {
+                background: lightgrey;
+                height: 200px;
+                width: 200px;
+            }
+            
+            div#mouse {
+                background: pink;
+                height: 200px;
+                width: 200px;
+            }
+            
+            div#load {
+                background: red;
+                height: 200px;
+                width: 200px;
+            }
+            
+            div#key {
+                background: cyan;
+                height: 200px;
+                width: 200px;
+            }
+            
+            @keyframes loadFrame {
+                0% {
+                    background: red;
+                    height: 200px;
+                    width: 200px;
+                }
+                16% {
+                    background: orange;
+                    height: 100px;
+                    width: 200px;
+                }
+                32% {
+                    background: yellow;
+                    height: 100px;
+                    width: 100px;
+                }
+                50% {
+                    background: lightgreen;
+                    height: 50px;
+                    width: 50px;
+                }
+                66% {
+                    background: yellow;
+                    height: 100px;
+                    width: 100px;
+                }
+                82% {
+                    background: orange;
+                    height: 200px;
+                    width: 100px;
+                }
+                100% {
+                    background: red;
+                    height: 200px;
+                    width: 200px;
+                }
+            }
+            
+            @keyframes mouseFrame {
+                0% {
+                    background: pink;
+                    height: 200px;
+                    width: 200px;
+                }
+                33% {
+                    background: blue;
+                    height: 300px;
+                    width: 100px;
+                }
+                66% {
+                    background: green;
+                    height: 100px;
+                    width: 300px; 
+                }
+                100% {
+                    background: pink;
+                    height: 200px;
+                    width: 200px;
+                }
+            }
+            
+            @keyframes keyPressed {
+                0% {
+                    background: cyan;
+                    height: 200px;
+                    width: 200px;
+                }
+                10% {
+                    background: blue;
+                    height: 100px;
+                    width: 100px;
+                }
+                20% {
+                    background: purple;
+                    height: 50px;
+                    width: 50px;
+                }
+                30% {
+                    background: white;
+                }
+                40% {
+                    background: orange;
+                    height: 100px;
+                    width: 100px;
+                }
+                50% {
+                    background: yellow;
+                    height: 200px;
+                    width: 200px;
+                }
+                60% {
+                    background: lightgreen;
+                    height: 250px;
+                    width: 250px;
+                }
+                70% {
+                    background: lightblue;
+                    height: 300px;
+                    width: 300px;
+                }
+                80% {
+                    background: crimson;
+                    height: 250px;
+                    width: 250px;
+                }
+                90% {
+                    background: teal;
+                    height: 200px;
+                    width: 200px;
+                }
+                100% {
+                    background: cyan;
+                }
+            }
+            
+        </style>
+    </head>
+    <body>
+        <h1>Standard JS Events</h1>
+        
+    <script>
+        window.onclick = function clickFunc() {
+            var elem = document.getElementById('click');
+            var values = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F'];
+            var randomC = '#';
+            
+            for (var i = 0; i < 6; i++) {
+                randomC += values[Math.floor(Math.random() * 16)];
+            }
+            
+            elem.style.transition = "background 1.0s linear 0s";
+            elem.style.background = randomC;
+        }
+        
+        window.onkeypress = function keyPress() {
+            var elem = document.getElementById('key');
+            elem.style.animation = "keyPressed 11s linear 0s";
+        }
+        
+        function mouseAni() {
+            var elem = document.getElementById('mouse');
+            elem.style.animation = "mouseFrame 4s both";
+        }
+        
+        function mouseTransition() {
+            var elem = document.getElementById('mouse');
+            elem.style.transition = "background 2.0s linear 0s";
+            elem.style.background = "teal";
+        }
+        
+        window.onload = function loadFunc() {
+            var elem = document.getElementById('load');
+            elem.style.animation = "loadFrame 6s infinite";
+        }
+        
+    </script>
+        <p>This div animates when a key is pressed.</p>
+        <div id="key"></div>
+        
+        <p>On mouse over > Transition. <br> On mouse out > Animation.</p>
+        <div id="mouse" onmouseover="mouseTransition()" onmouseout="mouseAni()"></div>
+        
+        <p>This animation begins on load.</p>
+        <div id="container">
+            <div id="load" onclick="loadFunc();"></div>
+        </div><br>
+        
+        <div id="click">Click to transition to a random color!</div>
+        
+    </body> 
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        
+        <style>
+            h1 {text-align: center;}
+
+        </style>
+    </head>
+    <body>
+        <h1>HTML5 Tags</h1>
+        
+        <h2>Video Tag</h2>
+        <p>The video tag is used to nest a video into your web page. Below is a video of one of my Overwatch plays of the game.</p>
+        <video width="600px" controls>
+            <source src="ow-replay.mp4" type="video/mp4">
+        </video>
+        
+        <p>You can also nest YouTube videos. Below is one of my favorite Mormon Messages. It is called "Lessons I learned as a Boy".</p>
+        <iframe width="600px" height="330px" src="https://www.youtube.com/embed/naqX9iYE0V0"></iframe>
+        
+        <h2>Audio Tag</h2>
+        <p>You can also nest audio files. Here is an audio clip of my Overwatch replay.</p>
+        <audio controls>
+            <source src="ow-replay.mp4" type="audio/mp4">
+        </audio><br>
+        
+        <h2>Cavas Tag</h2>
+        <p>The canvas tag in HTML5 is used as a container for graphics you draw using JavaScript.</p>
+        <canvas id="myCanvas" width="600px" height="330px" style="border: solid";>
+        </canvas>
+        
+        <script>
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            ctx.font = "70px Arial";
+            ctx.strokeText("Basic Canvas", 90, 140);
+            ctx.strokeText("Example", 160, 210);
+            
+        </script>
+        
+    </body> 
+</html>

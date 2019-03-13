@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        
+        <style>
+            h1 {text-align: center;}
+            
+            p {text-align: center;}
+            
+            div#cont1 {
+                align-content: center;
+                margin-right: auto;
+                margin-left: auto;
+                background: lightgrey;
+                height: 30px;
+                width: 400px;
+                border: solid;
+                
+            }
+            
+            div#one {
+                background: lightgreen;
+                height: 30px;
+                width: 5px;
+                transition: width 5s linear;
+            }
+            
+            div#one:active {
+                width: 400px;
+            }
+            
+            div#cont2 {
+                background: lightgrey;
+                height: 200px;
+                width: 200px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            div#two {
+                background: red;
+                height: 100px;
+                width: 100px;
+                margin-left: 50px;
+                margin-top: 50px;
+                position: absolute;
+                transition: margin-top 1s linear;
+            }
+            
+            div#three {
+                background: blue;
+                height: 100px;
+                width: 100px;
+                margin-left: 50px;
+                margin-top: 50px;
+                position: absolute;
+                transition: margin-top 1s linear;
+            }
+            
+            div#four {
+                background: green;
+                height: 100px;
+                width: 100px;
+                margin-left: 50px;
+                margin-top: 50px;
+                position: absolute;
+                transition: margin-left 1s linear;
+            }
+            
+            div#five {
+                background: yellow;
+                height: 100px;
+                width: 100px;
+                margin-left: 50px;
+                margin-top: 50px;
+                position: absolute;
+                transition: margin-left 1s linear;
+            }
+            
+            
+            div#two:not(:hover) { margin-top: 0px; }
+            div#three:not(:hover) { margin-top: 100px; }
+            div#four:not(:hover) { margin-left: 0px; }
+            div#five:not(:hover) { margin-left: 100px; }
+
+        </style>
+    </head>
+    <body>
+        <h1>CSS3 Transitions</h1>
+        <p>Click and hold the green to load the bar</p>
+        <div id="cont1">
+            <div id="one"></div>
+        </div>
+        
+        <p>Hover over a color to move it to the middle</p>
+        <div id="cont2">
+            <div id="two"></div>
+            <div id="three"></div>
+            <div id="four"></div>
+            <div id="five"></div>
+        </div>
+        
+    </body> 
+</html>

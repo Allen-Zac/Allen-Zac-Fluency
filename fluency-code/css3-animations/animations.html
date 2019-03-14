@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        
+        <style>
+            h1 {text-align: center;}
+            
+            div#cont {
+                height: 201px;
+                width: 600px;
+            }
+            
+            div#ani1 {
+                background: cyan;
+                height: 100px;
+                width: 100px;
+                text-align: center;
+            }
+            
+            div#ani1:not(:active) {
+                animation: key1 5s linear 0s infinite;
+            }
+            
+            div#ani2 {
+                background: red;
+                height: 100px;
+                width: 100px;
+                text-align: center;
+            }
+            
+            div#ani2:hover {
+                animation: key2 2s linear 0s 1 both;
+            }
+            
+            div#ani3 {
+                background: green;
+                height: 100px;
+                width: 100px;
+                text-align: center;
+            }
+            
+            div#ani3:not(:active) {
+                animation: key3 2s linear 0s 1;
+            }
+            
+            @keyframes key1 {
+                from {
+                    background: cyan;
+                    height: 100px;
+                    width: 100px;
+                }
+                
+                to {
+                    background: purple;
+                    height: 200px;
+                    width: 200px;
+                    transform: translateX(500px);
+                }
+            }
+            
+            @keyframes key2 {
+                from {
+                    background: red;
+                    height: 100px;
+                    width: 100px;
+                }
+                
+                to {
+                    background: gold;
+                    height: 200px;
+                    width: 200px;
+                    transform: rotate(1080deg);
+                }
+            }
+            
+            @keyframes key3 {
+                0% {
+                    background: green;
+                    height: 100px;
+                    width: 100px; 
+                }
+                
+                50% {
+                    background: blue;
+                    height: 200px;
+                    width: 200px;
+                    transform: rotate(-720deg) skewX(80deg);
+                    
+                }
+    
+                100% {
+                    background: green;
+                    height: 100px;
+                    width: 100px;
+                    transform: rotate(720deg) skewX(0deg);
+                }
+            }
+            
+        </style>
+    </head>
+    <body>
+        <h1>CSS3 Animations</h1>
+        
+        <div id="cont">
+            <div id="ani1">Click to Reset Animation</div>
+        </div>
+        
+        <div id="cont">
+            <div id="ani2">Hover to Animate</div>
+        </div>
+        
+        <div id="cont">
+            <div id="ani3">Click to Animate</div>
+        </div>
+        
+    </body> 
+</html>

@@ -5,18 +5,65 @@
     <title>Final Application: Pong</title>
     
     <style>
-        canvas {
-            background: lightgrey;
-            display: block;
+        body {
+            background: navy;
+        }
+        
+        div#div1 {
+            z-index: 1;
+            background: black;
+            height: 276px;
+            width: 532px;
             margin-left: auto;
             margin-right: auto;
+            margin-top: 226px;
+            position: relative;
+        }
+        
+        canvas {
+            z-index: 2;
+            background: #0065ff;
+            display: block;
+            left: 50%;
+            margin-left: -256px;
+            margin-top: 10px;
+            position: absolute;
+        }
+        
+        div#rules {
+            z-index: 3;
+            text-align: center;
+            background: white;
+            height: 20px;
+            width: 20px;
+            left: 50%;
+            margin-left: -10px;
+            margin-top: 220px;
+            border: 3px solid black;
+            position: absolute; 
+        }
+        
+        div#rules:not(:active) {
+            animation: flash 1s linear 0s infinite;
+        }
+        
+        @keyframes flash {
+            0% { background: white; }
+            49% { background: white; }
+            50% { background: red; }
+            99% { background: red; }
+            100% {background: white; }
         }
         
     </style>
 </head>
 <body>
 
+    <div id="rules" onclick="rulesClick()" hidden><b>!</b></div>
+    
     <canvas id="gameCanv" width="512" height="256"></canvas>
+    
+    <div id="div1"></div>
     
     <script>
         var canvas = document.getElementById("gameCanv");
@@ -30,15 +77,19 @@
         var qPress = false;
         var x = canvas.width/2;
         var y = canvas.height - 30;
-        var ballRadius = 5;
+        var bRad = 5;
         var dx = -2;
         var dy = -3;
-        var paddleHeight = 5;
-        var paddleWidth = 70;
-        var paddleX = (canvas.width - paddleWidth)/2;
-        var paddleDx = 7;
+        var pHeight = 5;
+        var pWidth = 70;
+        var pX = (canvas.width - pWidth)/2;
+        var pDx = 7;
         var highScore = localStorage.getItem(stored);
         var score = 0;
+        
+        function rulesClick() {
+            document.getElementById("rules").style.display = "none";
+        }
         
         document.addEventListener("keydown", keyDownHandler, false);
         document.addEventListener("keyup", keyUpHandler, false);
@@ -81,77 +132,77 @@
         
         function drawScoreOption() {
             ctx.font = "20px Arial";
-            ctx.fillStyle = "black";
+            ctx.fillStyle = "#baebff";
             ctx.fillText("Press 'H' to view high score", 130, 190);
         }
         
         function drawGameName() {
             ctx.font = "40px Arial";
-            ctx.fillStyle = "black";
+            ctx.fillStyle = "#baebff";
             ctx.fillText("Single Player Pong", 90, 90);
         }
         
         function drawStartGame() {
             ctx.font = "20px Arial";
-            ctx.fillStyle = "black";
+            ctx.fillStyle = "#baebff";
             ctx.fillText("Press 'P' to play", 185, 150);
         }
         
         function drawScoreText() {
             ctx.font = "40px Arial";
-            ctx.fillStyle = "black";
+            ctx.fillStyle = "#baebff";
             ctx.fillText("The High Score is: ", 80, 120);
         }
         
         function drawHighScore() {
             ctx.font = "40px Arial";
-            ctx.fillStyle = "black";
+            ctx.fillStyle = "#baebff";
             ctx.fillText(highScore, 250, 180);
         }
         
         function drawScoreReset() {
             ctx.font = "15px Arial";
-            ctx.fillStyle = "black";
+            ctx.fillStyle = "#baebff";
             ctx.fillText("Press 'R' to reset", 10, 250);
         }
         
         function drawReturn() {
             ctx.font = "15px Arial";
-            ctx.fillStyle = "black";
+            ctx.fillStyle = "#baebff";
             ctx.fillText("Press 'Q' for main menu", 345, 250);
         }
         
         function drawScore() {
             ctx.font = "20px Arial";
-            ctx.fillStyle = "black";
+            ctx.fillStyle = "#baebff";
             ctx.fillText("Score: " + score, 400, 50);
         }
         
         function drawGameOver() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.font = "40px Arial";
-            ctx.fillStyle = "black";
+            ctx.fillStyle = "#baebff";
             ctx.fillText("GAME OVER!", 130, 60);
         }
         
         function drawYouScored() {
             ctx.font = "30px Arial";
-            ctx.fillStyle = "black";
+            ctx.fillStyle = "#baebff";
             ctx.fillText("You Scored a: " + score, 150, 150);
         }
         
         function drawBall() {
             ctx.beginPath();
-            ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-            ctx.fillStyle = "red";
+            ctx.arc(x, y, bRad, 0, Math.PI*2);
+            ctx.fillStyle = "#faff00";
             ctx.fill();
             ctx.closePath();
         }
         
         function drawPaddle() {
             ctx.beginPath();
-            ctx.rect(paddleX, canvas.height - (paddleHeight), paddleWidth, paddleHeight);
-            ctx.fillStyle = "blue";
+            ctx.rect(pX, canvas.height - (pHeight), pWidth, pHeight);
+            ctx.fillStyle = "#faff00";
             ctx.fill();
             ctx.closePath();
         }
@@ -205,24 +256,24 @@
             
             //Move the paddle
             if (rkPress) {
-                paddleX += paddleDx;
+                pX += pDx;
             }
             
             else if (lkPress) {
-                paddleX -= paddleDx;
+                pX -= pDx;
             }
             
             //Add colision detection for the walls
-            if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
+            if (x + dx > canvas.width - bRad || x + dx < bRad) {
                 dx = -dx;
             }
             
-            if (y + dy < ballRadius) {
+            if (y + dy < bRad) {
                 dy = -dy;
             }
             
             else if (y + dy > canvas.height) {
-                if (x > paddleX && x < paddleX + paddleWidth) {
+                if (x > pX && x < pX + pWidth) {
                     dy = -dy;
                 }
                 else {
@@ -238,15 +289,15 @@
             }
             
             //Add colision detection for the paddle
-            if (rkPress && (paddleX + paddleWidth) > canvas.width) {
-                paddleX -= paddleDx;
+            if (rkPress && (pX + pWidth) > canvas.width) {
+                pX -= pDx;
             }
             
-            else if (lkPress && paddleX < 0) {
-                paddleX += paddleDx;
+            else if (lkPress && pX < 0) {
+                pX += pDx;
             }
             
-            if (y + dy < ballRadius || (y + dy > canvas.height - paddleHeight - ballRadius && x + dx > paddleX && x + dx < paddleX + paddleWidth)) {
+            if (y + dy < bRad || (y + dy > canvas.height - pHeight - bRad && x + dx > pX && x + dx < pX + pWidth)) {
                 dy = -dy;
                 score++;
             }

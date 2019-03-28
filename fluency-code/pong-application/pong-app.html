@@ -9,6 +9,10 @@
             background: navy;
         }
         
+        div#ruleSheet h1 {
+            text-align: center;
+        }
+        
         div#div1 {
             z-index: 1;
             background: black;
@@ -37,7 +41,7 @@
             height: 20px;
             width: 20px;
             left: 50%;
-            margin-left: -10px;
+            margin-left: 45px;
             margin-top: 220px;
             border: 3px solid black;
             position: absolute; 
@@ -47,19 +51,80 @@
             animation: flash 1s linear 0s infinite;
         }
         
+        div#ruleSheet {
+            z-index: 4;
+            background: grey;
+            height: 0px;
+            width: 0px;
+            left: 50%;
+            margin-left: -256px;
+            margin-top: 10px;
+            position: absolute;
+            overflow: hidden;
+        }
+        
+        div#closeRules {
+            z-index: 5;
+            background-image: url(images/x5.png);
+            height: 20px;
+            width: 20px;
+            left: 50%;
+            margin-left: 230px;
+            margin-top: 15px;
+            display: none;
+            position: absolute;
+        }
+        
         @keyframes flash {
             0% { background: white; }
-            49% { background: white; }
-            50% { background: red; }
-            99% { background: red; }
+            50% { background: lightblue; }
             100% {background: white; }
+        }
+        
+        @keyframes growRules {
+            from {
+                height: 0;
+                width: 0;
+            }
+            
+            to {
+                height: 256px;
+                width: 512px;
+                transform: rotate(1080deg);
+            }
+        }
+        
+        @keyframes shrinkRules {
+            from {
+                height: 256px;
+                width: 512px;
+            }
+            
+            to {
+                height: 0;
+                width: 0;
+                transform: rotate(-1080deg);
+            }
         }
         
     </style>
 </head>
 <body>
+    
+    <div id="closeRules" onclick="exitRules()"></div>
+    
+    <div id="ruleSheet">
+        <h1><u>How to Play</u></h1>
+        <ul>
+            <h3>
+                <li>Move the paddle with the left and right arrow keys.</li>
+                <li>Every ball bounce is worth 1 point.</li>
+                <li>If you miss the ball, GAME OVER!</li>
+            </h3>
+        </ul>
+    </div>
 
-    <div id="rules" onclick="rulesClick()" hidden><b>!</b></div>
+    <div id="rules" onclick="rulesClick()"><b>!</b></div>
     
     <canvas id="gameCanv" width="512" height="256"></canvas>
     
@@ -88,7 +153,22 @@
         var score = 0;
         
         function rulesClick() {
+            var rS = document.getElementById("ruleSheet");
+            
+            document.getElementById("closeRules").style.display = "block";
             document.getElementById("rules").style.display = "none";
+            
+            rS.style.animation = "growRules 1s linear 0s both";
+        }
+        
+        function exitRules() {
+            var elem = document.getElementById("ruleSheet");
+            
+            document.getElementById("closeRules").style.display = "none";
+            
+            document.getElementById("rules").style.display = "block";
+            
+            elem.style.animation = "shrinkRules 1s linear 0s both";
         }
         
         document.addEventListener("keydown", keyDownHandler, false);
@@ -191,6 +271,12 @@
             ctx.fillText("You Scored a: " + score, 150, 150);
         }
         
+        function drawClick() {
+            ctx.font = "20px Arial";
+            ctx.fillStyle = "#baebff";
+            ctx.fillText("Click for rules", 172, 230);
+        }
+        
         function drawBall() {
             ctx.beginPath();
             ctx.arc(x, y, bRad, 0, Math.PI*2);
@@ -209,6 +295,8 @@
         
         function drawViewHighScore() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            document.getElementById("rules").style.display = "none";
             
             drawScoreText();
             drawHighScore();
@@ -231,6 +319,7 @@
             drawGameName();
             drawStartGame();
             drawScoreOption();
+            drawClick();
             
             if (hPress) {
                 drawViewHighScore();
@@ -244,6 +333,8 @@
         }
         
         function draw() {
+            document.getElementById("rules").style.display = "none";
+            
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
             drawBall();

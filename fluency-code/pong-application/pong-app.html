@@ -9,6 +9,14 @@
             background: navy;
         }
         
+        button#nameBut {
+            z-index: 1;
+            margin-top: -40px;
+            left: 50%;
+            margin-left: -90px;
+            position: absolute;
+        }
+        
         div#ruleSheet h1 {
             text-align: center;
         }
@@ -111,12 +119,15 @@
 </head>
 <body>
     
+    <button type="button" id="nameBut" onclick="namebutt()" hidden>Input Name for High Score</button>
+    
     <div id="closeRules" onclick="exitRules()"></div>
     
     <div id="ruleSheet">
         <h1><u>How to Play</u></h1>
         <ul>
             <h3>
+                <li>Press "P" from the main menu (The game will begin instantly, so be ready).</li>
                 <li>Move the paddle with the left and right arrow keys.</li>
                 <li>Every ball bounce is worth 1 point.</li>
                 <li>If you miss the ball, GAME OVER!</li>

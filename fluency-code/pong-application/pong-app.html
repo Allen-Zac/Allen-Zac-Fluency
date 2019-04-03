@@ -9,16 +9,164 @@
             background: navy;
         }
         
-        button#nameBut {
-            z-index: 1;
-            margin-top: -40px;
+        div#ruleSheet h1 {
+            text-align: center;
+        }
+        
+        div#highNameDiv {
+            z-index: 6;
+            background: silver;
+            width: 512px;
+            position: absolute;
             left: 50%;
-            margin-left: -90px;
+            margin-left: -256px;
+            margin-top: 174px;
+            text-align: center;
+            display: none;
+        }
+        
+        div#titleScreen {
+            z-index: 6;
+            background: lightblue;
+            position: absolute;
+            height: 256px;
+            width: 512px;
+            left: 50%;
+            margin-left: -256px;
+            margin-top: 10px;
+            animation: aniTitle 3s linear 0s infinite;
+        }
+        
+        div#titleScreen div {
+            background: clear;
+            width: 40px;
+            height: 60px;
+            text-align: center;
+            font-family: comic sans ms;
+            font-size: 50px;
             position: absolute;
         }
         
-        div#ruleSheet h1 {
-            text-align: center;
+        div#lS0 {
+            color: ;
+            margin-left: 130px;
+            margin-top: ;
+            animation: titleLetE 1.5s linear 0s infinite;
+        }
+        
+        div#lI0 {
+            color: ;
+            margin-left: 170px;
+            margin-top: 5px;
+            animation: titleLetO 1s linear 0s infinite;
+        }
+        
+        div#lN0 {
+            color: ;
+            margin-left: 210px;
+            margin-top: ;
+            animation: titleLetE 2s linear 0s infinite;
+        }
+        
+        div#lG0 {
+            color: ;
+            margin-left: 250px;
+            margin-top: 5px;
+            animation: titleLetO 1.2s linear 0s infinite;
+        }
+        
+        div#lL0 {
+            color: ;
+            margin-left: 290px;
+            margin-top: ;
+            animation: titleLetE .5s linear 0s infinite;
+        }
+        
+        div#lE0 {
+            color: ;
+            margin-left: 330px;
+            margin-top: 5px;
+            animation: titleLetO 1.4s linear 0s infinite;
+        }
+        
+        div#lP1 {
+            color: ;
+            margin-left: 130px;
+            margin-top: 65px;
+            animation: titleLetO 1.8s linear 0s infinite;
+        }
+        
+        div#lL1 {
+            color: ;
+            margin-left: 170px;
+            margin-top: 60px;
+            animation: titleLetE 1.2s linear 0s infinite;
+        }
+        
+        div#lA1 {
+            color: ;
+            margin-left: 210px;
+            margin-top: 65px;
+            animation: titleLetO 2s linear 0s infinite;
+        }
+        
+        div#lY1 {
+            color: ;
+            margin-left: 250px;
+            margin-top: 60px;
+            animation: titleLetE .8s linear 0s infinite;
+        }
+        
+        div#lE1 {
+            color: ;
+            margin-left: 290px;
+            margin-top: 65px;
+            animation: titleLetO 1s linear 0s infinite;
+        }
+        
+        div#lR1 {
+            color: ;
+            margin-left: 330px;
+            margin-top: 60px;
+            animation: titleLetE 1.6s linear 0s infinite;
+        }
+        
+        div#lP2 {
+            color: ;
+            margin-left: 170px;
+            margin-top: 125px;
+            animation: titleLetO 1.1s linear 0s infinite;
+        }
+        
+        div#lO2 {
+            color: ;
+            margin-left: 210px;
+            margin-top: 120px;
+            animation: titleLetE 1.9s linear 0s infinite;
+        }
+        
+        div#lN2 {
+            color: ;
+            margin-left: 250px;
+            margin-top: 125px;
+            animation: titleLetO .9s linear 0s infinite;
+        }
+        
+        div#lG2 {
+            color: ;
+            margin-left: 290px;
+            margin-top: 120px;
+            animation: titleLetE 1.3s linear 0s infinite;
+        }
+        
+        div#titleScreen div#c2S {
+            width: 110px;
+            height: 30px;
+            margin-top: 225px;
+            margin-left: 200px;
+            font-family: sans-serif;
+            font-size: 18px;
+            color: aqua;
         }
         
         div#div1 {
@@ -115,11 +263,91 @@
             }
         }
         
+        @keyframes aniTitle {
+            0% {
+                background: #0030ff;
+            }
+            50% {
+                background: #0070ff;
+            }
+            100% {
+                background: #0030ff;
+            }
+        }
+        
+        @keyframes titleLetO {
+            0% { 
+                transform: rotate(0deg);
+                color: gold;
+            }
+            25% { 
+                transform: rotate(5deg);
+                color: ;
+            }
+            50% { 
+                transform: rotate(0deg);
+                color: lightgreen;
+            }
+            75% {
+                transform: rotate(-5deg); 
+                color: ;
+            }
+            100% { 
+                transform: rotate(0deg);
+                color: gold;
+            }
+        }
+        
+        @keyframes titleLetE {
+            0% {
+                transform: rotate(0deg);
+                color: aqua;
+            }
+            25% {
+                transform: rotate(-5deg);
+                color: ;
+            }
+            50% { 
+                transform: rotate(0deg);
+                color: yellow;
+            }
+            75% { 
+                transform: rotate(5deg);
+                color: ;
+            }
+            100% { 
+                transform: rotate(0deg);
+                color: aqua;
+            }
+        }
+        
     </style>
 </head>
 <body>
-    
-    <button type="button" id="nameBut" onclick="namebutt()" hidden>Input Name for High Score</button>
+    <div id="highNameDiv">
+        <p>
+            Name for High Score: <input id="inputBox" placeholder="Guest"> <button type="button" onclick="highNameFun()">Submit</button>
+        </p>
+    </div>
+    <div id="titleScreen" onclick="closeTitle()">
+        <div id="lS0">S</div>
+        <div id="lI0">I</div>
+        <div id="lN0">N</div>
+        <div id="lG0">G</div>
+        <div id="lL0">L</div>
+        <div id="lE0">E</div>
+        <div id="lP1">P</div>
+        <div id="lL1">L</div>
+        <div id="lA1">A</div>
+        <div id="lY1">Y</div>
+        <div id="lE1">E</div>
+        <div id="lR1">R</div>
+        <div id="lP2">P</div>
+        <div id="lO2">O</div>
+        <div id="lN2">N</div>
+        <div id="lG2">G</div>
+        <div id="c2S">-click to start-</div>
+    </div>
     
     <div id="closeRules" onclick="exitRules()"></div>
     
@@ -144,7 +372,8 @@
     <script>
         var canvas = document.getElementById("gameCanv");
         var ctx = canvas.getContext("2d");
-        var stored = "stored";
+        var storedScore = "storedScore";
+        var storedName = "storedName";
         var lkPress = false;
         var rkPress = false;
         var pPress = false;
@@ -160,8 +389,10 @@
         var pWidth = 70;
         var pX = (canvas.width - pWidth)/2;
         var pDx = 7;
-        var highScore = localStorage.getItem(stored);
+        var highScore = localStorage.getItem(storedScore);
         var score = 0;
+        var name = "Guest";
+        var highName = localStorage.getItem(storedName);
         
         function rulesClick() {
             var rS = document.getElementById("ruleSheet");
@@ -180,6 +411,19 @@
             document.getElementById("rules").style.display = "block";
             
             elem.style.animation = "shrinkRules 1s linear 0s both";
+        }
+        
+        function closeTitle() {
+           var elem = document.getElementById("titleScreen");
+            
+            elem.style.display = "none";
+        }
+        
+        function highNameFun() {
+            name = document.getElementById("inputBox").value;
+            
+            localStorage.setItem(storedName, name);
+            document.getElementById("highNameDiv").style.display = "none";
         }
         
         document.addEventListener("keydown", keyDownHandler, false);
@@ -242,13 +486,13 @@
         function drawScoreText() {
             ctx.font = "40px Arial";
             ctx.fillStyle = "#baebff";
-            ctx.fillText("The High Score is: ", 80, 120);
+            ctx.fillText("High Score", 150, 120);
         }
         
         function drawHighScore() {
             ctx.font = "40px Arial";
             ctx.fillStyle = "#baebff";
-            ctx.fillText(highScore, 250, 180);
+            ctx.fillText(highName + ": " + highScore, 160, 180);
         }
         
         function drawScoreReset() {
@@ -260,7 +504,7 @@
         function drawReturn() {
             ctx.font = "15px Arial";
             ctx.fillStyle = "#baebff";
-            ctx.fillText("Press 'Q' for main menu", 345, 250);
+            ctx.fillText("Press 'Q' for title screen", 345, 250);
         }
         
         function drawScore() {
@@ -379,8 +623,9 @@
                     dy = -dy;
                 }
                 else {
-                    if (score > localStorage.getItem(stored)) {
-                        localStorage.setItem(stored, score);
+                    if (score > localStorage.getItem(storedScore)) {
+                        localStorage.setItem(storedScore, score);
+                        document.getElementById("highNameDiv").style.display = "block";
                     }
                     
                     x = canvas.width/2;

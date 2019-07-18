@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Rock, Paper, Scissors AI</title>
+</head>
+<body>
+
+    <h1 id="header">Rock Paper Scissors</h1>
+    
+    <div>Your Wins: <span id="winSpan"></span></div>
+    <div>Ties: <span id="tieSpan"></span></div>
+    <div>AI Wins: <span id="lossSpan"></span></div><br>
+    
+    <button type="button" onclick="choiceRock()">Rock</button>
+    <button type="button" onclick="choicePaper()">Paper</button>
+    <button type="button" onclick="choiceScissors()">Scissors</button>
+    <div id="output"></div>
+
+    <script>
+        var rock = 0;
+        var paper = 0;
+        var scissors = 0;
+        var total = 0;
+        var probRock;
+        var probScissors;
+        var probPaper;
+        var AI = "";
+        var output = "";
+        var random;
+        var wins = 0;
+        var losses = 0;
+        var ties = 0;
+        
+        function choiceRock() {
+            total++;
+            
+            if (probRock > probPaper && probRock >  probScissors) {
+                AI = "Paper";
+            }
+            else if (probPaper > probRock && probPaper > probScissors) {
+                AI = "Scissors";
+            }
+            else if (probScissors > probRock && probScissors > probPaper) {
+                AI = "Rock";
+            }
+            else {
+                random = Math.floor(Math.random() * 3) + 1;
+            }
+            
+            if (random == 1) {
+                AI = "Rock";
+            }
+            else if (random == 2) {
+                AI = "Paper";
+            }
+            else if (random == 3) {
+                AI = "Scissors";
+            }
+            
+            if (AI == "Rock"){
+                output = "It's a Tie";
+            }
+            else if (AI == "Paper"){
+                output = "You Lose";
+            }
+            else if (AI == "Scissors"){
+                output = "You Win";
+            }
+            
+            rock++;
+            
+            probRock = rock / total;
+            probScissors = scissors / total;
+            probPaper = paper / total;
+            document.getElementById("output").innerHTML = output;
+            
+            if (output == "You Win") {
+                wins++;
+            }
+            else if (output == "It's a Tie") {
+                ties++;
+            }
+            else if (output == "You Lose") {
+                losses++;
+            }
+            document.getElementById("winSpan").innerHTML = wins;
+            document.getElementById("lossSpan").innerHTML = losses;
+            document.getElementById("tieSpan").innerHTML = ties;
+        }
+        
+        function choicePaper() {
+            total++;
+            
+            if (probRock > probPaper && probRock >  probScissors) {
+                AI = "Paper";
+            }
+            else if (probPaper > probRock && probPaper > probScissors) {
+                AI = "Scissors";
+            }
+            else if (probScissors > probRock && probScissors > probPaper) {
+                AI = "Rock";
+            }
+            else {
+                random = Math.floor(Math.random() * 3) + 1;
+            }
+            
+            if (random == 1) {
+                AI = "Rock";
+            }
+            else if (random == 2) {
+                AI = "Paper";
+            }
+            else if (random == 3) {
+                AI = "Scissors";
+            }
+            
+            if (AI == "Rock"){
+                output = "You Win";
+            }
+            else if (AI == "Paper"){
+                output = "It's a Tie";
+            }
+            else if (AI == "Scissors"){
+                output = "You Lose";
+            }
+            
+            paper++;
+            
+            probRock = rock / total;
+            probScissors = scissors / total;
+            probPaper = paper / total;
+            document.getElementById("output").innerHTML = output;
+            
+            if (output == "You Win") {
+                wins++;
+            }
+            else if (output == "It's a Tie") {
+                ties++;
+            }
+            else if (output == "You Lose") {
+                losses++;
+            }
+            document.getElementById("winSpan").innerHTML = wins;
+            document.getElementById("lossSpan").innerHTML = losses;
+            document.getElementById("tieSpan").innerHTML = ties;
+        }
+        
+        function choiceScissors() {
+            total++;
+            
+            if (probRock > probPaper && probRock >  probScissors) {
+                AI = "Paper";
+            }
+            else if (probPaper > probRock && probPaper > probScissors) {
+                AI = "Scissors";
+            }
+            else if (probScissors > probRock && probScissors > probPaper) {
+                AI = "Rock";
+            }
+            else {
+                random = Math.floor(Math.random() * 3) + 1;
+            }
+            
+            if (random == 1) {
+                AI = "Rock";
+            }
+            else if (random == 2) {
+                AI = "Paper";
+            }
+            else if (random == 3) {
+                AI = "Scissors";
+            } 
+            
+            if (AI == "Rock"){
+                output = "You Lose";
+            }
+            else if (AI == "Paper"){
+                output = "You Win";
+            }
+            else if (AI == "Scissors"){
+                output = "It's a Tie";
+            }
+            
+            scissors++;
+            
+            probRock = rock / total;
+            probScissors = scissors / total;
+            probPaper = paper / total;
+            
+            document.getElementById("output").innerHTML = output;
+            
+            if (output == "You Win") {
+                wins++;
+            }
+            else if (output == "It's a Tie") {
+                ties++;
+            }
+            else if (output == "You Lose") {
+                losses++;
+            }
+            document.getElementById("winSpan").innerHTML = wins;
+            document.getElementById("lossSpan").innerHTML = losses;
+            document.getElementById("tieSpan").innerHTML = ties;
+        }
+            
+    </script>
+</body>
+</html>
